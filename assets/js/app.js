@@ -4,17 +4,17 @@
  * ============================================================================
  * 
  * IMPORTANT CONFIGURATION:
- * Replace 'YOUR_SUPPORT_EMAIL' below with your actual support email address
+ * Replace 'alghasili.mustafa@gmail.com' below with your actual support email address
  * (e.g., 'support@fastaqim.com' or 'fastaqim.app@gmail.com') before publishing.
  */
 
 const CONFIG = {
   // Support email placeholder as requested in the task specifications
-  SUPPORT_EMAIL: 'YOUR_SUPPORT_EMAIL',
-  
+  SUPPORT_EMAIL: 'alghasili.mustafa@gmail.com',
+
   // Bug report email subject
   BUG_REPORT_SUBJECT: '[فاستقم] إبلاغ عن مشكلة فنية',
-  
+
   // Bug report email template body
   BUG_REPORT_TEMPLATE: `السلام عليكم ورحمة الله وبركاته،
 
@@ -65,7 +65,7 @@ function initSupportEmail() {
   });
 
   // Find all email mailto links
-  const emailLinks = document.querySelectorAll('a[href^="mailto:YOUR_SUPPORT_EMAIL"]');
+  const emailLinks = document.querySelectorAll('a[href^="mailto:alghasili.mustafa@gmail.com"]');
   emailLinks.forEach((link) => {
     link.href = `mailto:${CONFIG.SUPPORT_EMAIL}`;
   });

@@ -10,7 +10,7 @@
 
 | القيمة المؤقتة | الوصف | الملفات المعنية |
 |---|---|---|
-| `YOUR_SUPPORT_EMAIL` | عنوان البريد الإلكتروني الفعلي المخصص لاستقبال رسائل دعم التطبيق (مثال: `support@fastaqim.com` أو بريدك على Gmail) | `index.html`<br>`assets/js/app.js` |
+| `alghasili.mustafa@gmail.com` | عنوان البريد الإلكتروني الفعلي المخصص لاستقبال رسائل دعم التطبيق (مثال: `support@fastaqim.com` أو بريدك على Gmail) | `index.html`<br>`assets/js/app.js` |
 | `USERNAME` | اسم حسابك على GitHub | إعدادات المستودع ورابط الموقع النهائي |
 
 ---
@@ -19,14 +19,14 @@
 
 1. افتح ملف `assets/js/app.js`، وفي السطر رقم 14 تقريباً، استبدل:
    ```javascript
-   SUPPORT_EMAIL: 'YOUR_SUPPORT_EMAIL',
+   SUPPORT_EMAIL: 'alghasili.mustafa@gmail.com',
    ```
    بعنوان بريدك الحقيقي، مثال:
    ```javascript
-   SUPPORT_EMAIL: 'support@yourdomain.com',
+   SUPPORT_EMAIL: 'alghasili.mustafa@gmail.com',
    ```
 
-2. افتح ملف `index.html`، وابحث عن `YOUR_SUPPORT_EMAIL` واستبدلها ببريدك الإلكتروني (توجد في روابط `mailto:` والنصوص المعروضة).
+2. افتح ملف `index.html`، وابحث عن `alghasili.mustafa@gmail.com` واستبدلها ببريدك الإلكتروني (توجد في روابط `mailto:` والنصوص المعروضة).
 
 > 💡 **ملاحظة:** صُمم الموقع ليعمل بسلاسة حتى لو قمت بتغيير القيمة في ملف `assets/js/app.js` فقط؛ حيث يقوم السكريبت تلقائياً بتحديث جميع الروابط والنصوص في الصفحة. ومع ذلك يُفضل استبدالها في `index.html` أيضاً لضمان أفضل توافق مع محركات البحث وتطبيقات قراءة الشاشة عند إيقاف JavaScript.
 
