@@ -31,7 +31,7 @@ jobs:
       - name: Upload Static Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload root folder containing index.html, privacy/, assets/
+          # Upload root folder containing index.html, assets/
           path: '.'
 
   # Deployment Job: deploys the uploaded artifact after it has been finalized
