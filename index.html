@@ -68,7 +68,7 @@
 
       <!-- Header Action & Mobile Toggle -->
       <div class="header-actions">
-        <a href="mailto:support.fastaqim@gmail.com" class="btn btn-primary btn-sm" id="header-contact-btn">
+        <a href="mailto:support.fastaqim@gmail.com?subject=%5B%D9%81%D8%A7%D8%B3%D8%AA%D9%82%D9%85%5D%20%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%A7%D9%84%D8%AF%D8%B9%D9%85%20%D8%A7%D9%84%D9%81%D9%86%D9%8A" class="btn btn-primary btn-sm" id="header-contact-btn" data-email-trigger>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -115,7 +115,7 @@
             </p>
 
             <div class="hero-actions">
-              <a href="mailto:support.fastaqim@gmail.com" class="btn btn-primary" id="hero-email-btn">
+              <a href="mailto:support.fastaqim@gmail.com?subject=%5B%D9%81%D8%A7%D8%B3%D8%AA%D9%82%D9%85%5D%20%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%A7%D9%84%D8%AF%D8%B9%D9%85%20%D8%A7%D9%84%D9%81%D9%86%D9%8A" class="btn btn-primary" id="hero-email-btn" data-email-trigger>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
@@ -702,14 +702,23 @@
             - مرفقات: [يمكنك إرفاق صورة للشاشة]</div>
         </div>
 
-        <div class="bug-report-actions">
-          <a href="#" class="btn btn-primary" id="open-bug-email-btn">
+        <div class="contact-cta-buttons">
+          <a href="https://mail.google.com/mail/?view=cm&fs=1&to=support.fastaqim@gmail.com&su=%5B%D9%81%D8%A7%D8%B3%D8%AA%D9%82%D9%85%5D%20%D8%A5%D8%A8%D9%84%D8%A7%D8%BA%20%D8%B9%D9%86%20%D9%85%D8%B4%D9%83%D9%84%D8%A9%20%D9%81%D9%86%D9%8A%D8%A9" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="open-bug-gmail-btn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
-            <span>فتح رسالة بريد إلكتروني جاهزة</span>
+            <span>إرسال النموذج عبر Gmail</span>
+          </a>
+          <a href="#" class="btn btn-secondary" id="open-bug-email-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            <span>فتح في تطبيق البريد</span>
           </a>
         </div>
       </div>
@@ -747,17 +756,28 @@
             </button>
           </div>
 
-          <!-- Email Action Button -->
+          <!-- Email Action Buttons -->
           <div class="contact-cta-wrap">
-            <a href="mailto:support.fastaqim@gmail.com" class="btn btn-primary" id="main-contact-email-btn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
-              <span>إرسال رسالة إلى فريق الدعم</span>
-            </a>
-            <span class="contact-note">يتم فتح تطبيق البريد الإلكتروني الافتراضي على جهازك مباشرة</span>
+            <div class="contact-cta-buttons">
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=support.fastaqim@gmail.com&su=%5B%D9%81%D8%A7%D8%B3%D8%AA%D9%82%D9%85%5D%20%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%A7%D9%84%D8%AF%D8%B9%D9%85%20%D8%A7%D9%84%D9%81%D9%86%D9%8A" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="main-gmail-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                <span>فتح عبر بريد Gmail</span>
+              </a>
+              <a href="mailto:support.fastaqim@gmail.com?subject=%5B%D9%81%D8%A7%D8%B3%D8%AA%D9%82%D9%85%5D%20%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%A7%D9%84%D8%AF%D8%B9%D9%85%20%D8%A7%D9%84%D9%81%D9%86%D9%8A" class="btn btn-secondary" id="main-contact-email-btn" data-email-trigger>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+                <span>فتح تطبيق البريد</span>
+              </a>
+            </div>
+            <span class="contact-note">يمكنك الإرسال مباشرة عبر Gmail في المتصفح أو تطبيق البريد الافتراضي على جهازك</span>
           </div>
 
         </div>
@@ -802,6 +822,57 @@
 
     </div>
   </footer>
+
+  <!-- ========================================================================
+       Email Client / Webmail Options Modal
+       ======================================================================== -->
+  <div class="email-modal-overlay" id="email-modal" role="dialog" aria-modal="true" aria-labelledby="email-modal-title" aria-hidden="true">
+    <div class="email-modal-card">
+      <div class="email-modal-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </div>
+      <h3 class="email-modal-title" id="email-modal-title">تواصل مع الدعم الفني</h3>
+      <p class="email-modal-desc">
+        اختر الطريقة الأنسب لك لإرسال رسالتك إلى فريق دعم فاستقم عبر البريد الرسمي:
+        <br><strong dir="ltr">support.fastaqim@gmail.com</strong>
+      </p>
+      <div class="email-modal-actions">
+        <!-- Direct Gmail Web Compose in New Tab -->
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=support.fastaqim@gmail.com&su=%5B%D9%81%D8%A7%D8%B3%D8%AA%D9%82%D9%85%5D%20%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%A7%D9%84%D8%AF%D8%B9%D9%85%20%D8%A7%D9%84%D9%81%D9%86%D9%8A" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="modal-gmail-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <span>إرسال عبر بريد Gmail (في المتصفح)</span>
+        </a>
+
+        <!-- Default Mail Client (mailto:) -->
+        <a href="mailto:support.fastaqim@gmail.com?subject=%5B%D9%81%D8%A7%D8%B3%D8%AA%D9%82%D9%85%5D%20%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D9%85%D8%B9%20%D8%A7%D9%84%D8%AF%D8%B9%D9%85%20%D8%A7%D9%84%D9%81%D9%86%D9%8A" class="btn btn-secondary" id="modal-mailto-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          <span>فتح في تطبيق البريد (Outlook / Mail)</span>
+        </a>
+
+        <!-- Copy Email Button -->
+        <button type="button" class="btn btn-outline" id="modal-copy-email-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span>نسخ عنوان البريد الإلكتروني</span>
+        </button>
+      </div>
+      <button type="button" class="email-modal-close-btn" id="modal-close-btn" aria-label="إغلاق النافذة">
+        إلغاء وإغلاق
+      </button>
+    </div>
+  </div>
 
   <!-- Application Script -->
   <script src="assets/js/app.js"></script>

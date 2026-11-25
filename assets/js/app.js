@@ -11,6 +11,9 @@ const CONFIG = {
   // Support email configured for Fastaqim
   SUPPORT_EMAIL: 'support.fastaqim@gmail.com',
 
+  // Default contact email subject
+  DEFAULT_SUBJECT: '[فاستقم] تواصل مع الدعم الفني',
+
   // Bug report email subject
   BUG_REPORT_SUBJECT: '[فاستقم] إبلاغ عن مشكلة فنية',
 
@@ -42,8 +45,31 @@ const CONFIG = {
 شكراً لكم.`
 };
 
+/**
+ * Returns mailto link with encoded subject and optional body
+ */
+function getMailtoUrl(subject = CONFIG.DEFAULT_SUBJECT, body = '') {
+  let url = `mailto:${CONFIG.SUPPORT_EMAIL}?subject=${encodeURIComponent(subject)}`;
+  if (body) {
+    url += `&body=${encodeURIComponent(body)}`;
+  }
+  return url;
+}
+
+/**
+ * Returns direct Gmail Web Compose URL
+ */
+function getGmailWebUrl(subject = CONFIG.DEFAULT_SUBJECT, body = '') {
+  let url = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONFIG.SUPPORT_EMAIL)}&su=${encodeURIComponent(subject)}`;
+  if (body) {
+    url += `&body=${encodeURIComponent(body)}`;
+  }
+  return url;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initSupportEmail();
+  initContactEmailModal();
   initFAQAccordion();
   initFAQSearch();
   initBugReportHelpers();
@@ -54,19 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Ensures centralized support email is wired up across all mailto links and text elements
+ * Ensures centralized support email is wired up across all display elements and copy buttons
  */
 function initSupportEmail() {
   // Find all elements designated for displaying the email
   const emailDisplayElements = document.querySelectorAll('[data-support-email]');
   emailDisplayElements.forEach((el) => {
     el.textContent = CONFIG.SUPPORT_EMAIL;
-  });
-
-  // Find all email mailto links
-  const emailLinks = document.querySelectorAll('a[href^="mailto:support.fastaqim@gmail.com"]');
-  emailLinks.forEach((link) => {
-    link.href = `mailto:${CONFIG.SUPPORT_EMAIL}`;
   });
 
   // Wire up copy email button
@@ -189,18 +209,112 @@ function initFAQSearch() {
 }
 
 /**
+ * Contact Support Email Modal and redirection handling:
+ * - On mobile: directly redirects via native mailto
+ * - On desktop: redirects via mailto and provides modal with Gmail Web compose option
+ */
+function initContactEmailModal() {
+  const modal = document.getElementById('email-modal');
+  const closeBtn = document.getElementById('modal-close-btn');
+  const modalCopyBtn = document.getElementById('modal-copy-email-btn');
+  const modalGmailBtn = document.getElementById('modal-gmail-btn');
+  const modalMailtoBtn = document.getElementById('modal-mailto-btn');
+  const triggers = document.querySelectorAll('[data-email-trigger]');
+
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+  function openModal() {
+    if (!modal) return;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // Pre-fill modal links
+  if (modalGmailBtn) {
+    modalGmailBtn.href = getGmailWebUrl(CONFIG.DEFAULT_SUBJECT);
+  }
+  if (modalMailtoBtn) {
+    modalMailtoBtn.href = getMailtoUrl(CONFIG.DEFAULT_SUBJECT);
+  }
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', (e) => {
+      const mailtoUrl = getMailtoUrl(CONFIG.DEFAULT_SUBJECT);
+      if (isMobile) {
+        // Direct redirection to email composer on mobile
+        window.location.href = mailtoUrl;
+      } else {
+        // On desktop, trigger mailto and display options modal for webmail users
+        window.location.href = mailtoUrl;
+        openModal();
+      }
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && modal.classList.contains('open')) {
+      closeModal();
+    }
+  });
+
+  if (modalCopyBtn) {
+    modalCopyBtn.addEventListener('click', () => {
+      copyToClipboard(CONFIG.SUPPORT_EMAIL, 'تم نسخ البريد الإلكتروني بنجاح');
+      modalCopyBtn.classList.add('copied');
+      const originalHtml = modalCopyBtn.innerHTML;
+      modalCopyBtn.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        <span>تم نسخ البريد بنجاح!</span>
+      `;
+      setTimeout(() => {
+        modalCopyBtn.classList.remove('copied');
+        modalCopyBtn.innerHTML = originalHtml;
+      }, 2500);
+    });
+  }
+}
+
+/**
  * Bug reporting template helpers:
- * 1. Open pre-filled email in client
- * 2. Copy template text to clipboard
+ * 1. Direct Gmail Web compose link
+ * 2. Open pre-filled email in desktop/mobile mail client
+ * 3. Copy template text to clipboard
  */
 function initBugReportHelpers() {
   const openEmailBtn = document.getElementById('open-bug-email-btn');
+  const openGmailBtn = document.getElementById('open-bug-gmail-btn');
   const copyTemplateBtn = document.getElementById('copy-bug-template-btn');
+
+  if (openGmailBtn) {
+    openGmailBtn.href = getGmailWebUrl(CONFIG.BUG_REPORT_SUBJECT, CONFIG.BUG_REPORT_TEMPLATE);
+  }
 
   if (openEmailBtn) {
     openEmailBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const mailtoUrl = `mailto:${CONFIG.SUPPORT_EMAIL}?subject=${encodeURIComponent(CONFIG.BUG_REPORT_SUBJECT)}&body=${encodeURIComponent(CONFIG.BUG_REPORT_TEMPLATE)}`;
+      const mailtoUrl = getMailtoUrl(CONFIG.BUG_REPORT_SUBJECT, CONFIG.BUG_REPORT_TEMPLATE);
       window.location.href = mailtoUrl;
     });
   }
